@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=kasper.AI Personal Assistant - Configuration
+GenericName=kasper Personal Assistant Configuration
+Comment=Privacy aware personal assistant - configuration
+Exec=@kasperDIR@/bin/kasper-linux-configure
+Icon=kasper-ai
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=kasper.AI;Personal Assistant;Office;

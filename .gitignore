@@ -1,0 +1,14 @@
+
+.idea/
+.vscode
+.response
+extras/cmu_us_slt.flitevox
+requirements.txt
+**/__pycache__/
+/kasper_python
+/hwmixer
+/vlcplayer
+kasper_linux/hotword_engine/snowboy/_snowboydetect.so
+kasper_linux/hotword_engine/snowboy/snowboydetect.py
+/extras/output.wav
+/snowboy/

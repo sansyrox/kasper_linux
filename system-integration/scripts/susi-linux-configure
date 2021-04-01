@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# this wrapper is installed as follows:
+# user mode
+#   .../kasper.AI/bin/
+#   .../kasper.AI/pythonmods/
+#   .../kasper.AI/kasper_linux/
+# system mode
+#   prefix/bin/
+#   prefix/lib/kasper.AI/pythonmods
+#   prefix/lib/kasper.AI/kasper_linux/
+
+DIR="$(dirname "$(readlink -f "$0")")"
+kasperDIR_USER="$(readlink -m "$DIR/..")"
+kasperDIR_SYSTEM="$(readlink -m "$DIR/../lib/kasper.AI")"
+if [ -d "$kasperDIR_USER" ] && [ -r "$kasperDIR_USER/pythonmods/kasper_linux" ] ; then
+    PYTHONPATH="$kasperDIR_USER/pythonmods":$PYTHONPATH
+    export PYTHONPATH
+    kasperLINUX="$kasperDIR_USER/kasper_linux"
+elif [ -d "$kasperDIR_SYSTEM" ] && [ -r "$kasperDIR_SYSTEM/pythonmods/kasper_linux" ] ; then
+    PYTHONPATH="$kasperDIR_SYSTEM/pythonmods":$PYTHONPATH
+    export PYTHONPATH
+    kasperLINUX="$kasperDIR_SYSTEM/kasper_linux"
+else
+    echo "Cannot find kasper.AI kasper_linux folder" >&2
+    exit 1
+fi
+exec python3 "$kasperLINUX/configure.py" "$@"
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=kasper Linux
+Wants=network-online.target
+After=network-online.target ss-kasper-server.service
+
+[Service]
+Type=idle
+User=%i
+ExecStart=@kasperDIR@/bin/kasper-linux start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
